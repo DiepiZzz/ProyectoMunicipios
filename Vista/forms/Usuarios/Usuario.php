@@ -11,22 +11,15 @@
     <h1>Usuarios</h1>
     <ul>
 
-        <?php if (isset($users) && is_array($users) && count($users) > 0) { ?>
-            <ul>
-
-
-                <?php foreach ($users as $user) { ?>
-                    <li>
-                    <strong>Id:</strong><?php echo htmlspecialchars($user['id_usuario']); ?><br>
-                    <strong>Nombre:</strong> <?php echo htmlspecialchars($user['nombre']); ?>
-                
-                </li>
-                <hr>
-                <?php } ?>
-            </ul>
-        <?php } else { ?>
-            <p>No hay usuarios disponibles.</p>
-        <?php } ?>
+    <?php if (!empty($users)) { ?>
+        <ul>
+            <?php foreach ($users as $user) { ?>
+                <li><?php echo htmlspecialchars($user['nombre']) . ' - ' . htmlspecialchars($user['email']); ?></li>
+            <?php } ?>
+        </ul>
+    <?php } else { ?>
+        <p>No hay usuarios disponibles.</p>
+    <?php } ?>
 
 
     </ul>
