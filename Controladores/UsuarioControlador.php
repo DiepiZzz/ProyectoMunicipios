@@ -1,12 +1,13 @@
 <?php
-require_once __DIR__ . '/../Librerias/orm/ConexionBaseDeDatos.php';
-require_once __DIR__ . '/../Modelos/Entidades/Usuario.php';
+require_once __DIR__ . '/../Modelos/Repositorios/UsuarioRepositorio.php';
 
-class usuarioControlador
+class UsuarioControlador
 {
     public function index()
     {
-        $users = Usuario::all()->toArray();
+        $repositorio = new UsuarioRepositorio();
+        $users = $repositorio->obtenerTodos();
+
         include __DIR__ . '/../Vista/forms/Usuarios/Usuario.php';
     }
 }
