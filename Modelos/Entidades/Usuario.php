@@ -1,5 +1,7 @@
 <?php
 
+namespace Modelos\Entidades;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Usuario extends Model

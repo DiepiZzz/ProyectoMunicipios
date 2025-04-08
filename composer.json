@@ -4,6 +4,16 @@
         "illuminate/events": "^12.7",
         "illuminate/container": "^12.7",
         "illuminate/support": "^12.7",
-        "illuminate/http": "^12.7"
-    }
+        "illuminate/http": "^12.7",
+        "illuminate/translation": "^12.7",
+        "illuminate/validation": "^12.7",
+        "illuminate/hashing": "^12.7",
+        "phpmailer/phpmailer": "^6.9"
+    },
+
+    "autoload": {
+        "psr-4": {
+          "Modelos\\": "Modelos/"
+        }
+      }
 }

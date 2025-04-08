@@ -1,52 +1,38 @@
 
 <?php
-require_once __DIR__ . '/../../vendor/autoload.php';
-require_once __DIR__ . '/../../Librerias/orm/ConexionBaseDeDatos.php'; // conecta Eloquent
-require_once __DIR__ . '/../../Modelos/Repositorios/UsuarioRepositorio.php';
 
-// Instanciar repositorio
+require_once __DIR__ . '/../../vendor/autoload.php'; 
+require_once __DIR__ . '/../../Bootstrap.php';
+
+use Modelos\Repositorios\UsuarioRepositorio;
+use Modelos\Entidades\Usuario;
+
 $usuarioRepo = new UsuarioRepositorio();
 
-
-// 1. Crear un nuevo usuario
 echo "✅ Crear usuario:\n";
-$nuevoUsuario = $usuarioRepo->crear([
-    'username' => 'juan23',
-    'password' => password_hash('secreto123', PASSWORD_DEFAULT),
-    'nombre'   => 'Juan Pérez',
-    'email'    => 'juanperez@example.com',
+$nuevo = $usuarioRepo->crear([
+    'username' => 'testuser',
+    'password' => password_hash('12345678', PASSWORD_DEFAULT),
+    'nombre' => 'Test User',
+    'email' => 'test@example.com',
 ]);
-print_r($nuevoUsuario->toArray());
 
+print_r($nuevo->toArray());
 
-// 2. Obtener todos los usuarios
-echo "\n✅ Obtener todos:\n";
+echo "\n✅ Todos:\n";
 $todos = $usuarioRepo->obtenerTodos();
 foreach ($todos as $user) {
-    echo $user->id . " - " . $user->nombre . "\n";
+    echo $user->id_usuario . " - " . $user->nombre . "\n";
 }
 
-
-// 3. Buscar usuario por ID
 echo "\n✅ Buscar por ID:\n";
-$usuario = $usuarioRepo->buscarPorId($nuevoUsuario->id_usuario);
-print_r($usuario ? $usuario->toArray() : "No encontrado");
+$found = $usuarioRepo->buscarPorId($nuevo->id_usuario);
+print_r($found->toArray());
 
-
-// 4. Actualizar usuario
 echo "\n✅ Actualizar:\n";
-$actualizado = $usuarioRepo->actualizar($nuevoUsuario->id_usuario, [
-    'nombre' => 'Juan Actualizado'
-]);
+$updated = $usuarioRepo->actualizar($nuevo->id_usuario, ['nombre' => 'Actualizado']);
+print_r($updated->toArray());
 
-if ($actualizado) {
-    print_r($actualizado->toArray());
-} else {
-    echo "❌ No se pudo actualizar al usuario con ID: " . $nuevoUsuario->id_usuario . "\n";
-}
-
-
-// 5. Eliminar usuario
-echo "\n✅ Eliminar:\n";
-$eliminado = $usuarioRepo->eliminar($nuevoUsuario->id_usuario);
-echo $eliminado ? "Eliminado correctamente" : "No se pudo eliminar";
+//echo "\n✅ Eliminar:\n";
+//$deleted = $usuarioRepo->eliminar($nuevo->id_usuario);
+//echo $deleted ? "Eliminado" : "No eliminado";

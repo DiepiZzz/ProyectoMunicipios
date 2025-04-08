@@ -1,6 +1,8 @@
 <?php
 
-require_once __DIR__ . '/../Entidades/Usuario.php';
+namespace Modelos\Repositorios;
+
+use Modelos\Entidades\Usuario;
 
 class UsuarioRepositorio
 {
@@ -35,4 +37,4 @@ class UsuarioRepositorio
     }
 }
 
-?>
+
