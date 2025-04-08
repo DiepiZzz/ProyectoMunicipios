@@ -29,24 +29,24 @@ foreach ($todos as $user) {
 
 // 3. Buscar usuario por ID
 echo "\n✅ Buscar por ID:\n";
-$usuario = $usuarioRepo->buscarPorId($nuevoUsuario->id);
+$usuario = $usuarioRepo->buscarPorId($nuevoUsuario->id_usuario);
 print_r($usuario ? $usuario->toArray() : "No encontrado");
 
 
 // 4. Actualizar usuario
 echo "\n✅ Actualizar:\n";
-$actualizado = $usuarioRepo->actualizar($nuevoUsuario->id, [
+$actualizado = $usuarioRepo->actualizar($nuevoUsuario->id_usuario, [
     'nombre' => 'Juan Actualizado'
 ]);
 
 if ($actualizado) {
     print_r($actualizado->toArray());
 } else {
-    echo "❌ No se pudo actualizar al usuario con ID: " . $nuevoUsuario->id;
+    echo "❌ No se pudo actualizar al usuario con ID: " . $nuevoUsuario->id_usuario . "\n";
 }
 
 
 // 5. Eliminar usuario
 echo "\n✅ Eliminar:\n";
-$eliminado = $usuarioRepo->eliminar($nuevoUsuario->id);
+$eliminado = $usuarioRepo->eliminar($nuevoUsuario->id_usuario);
 echo $eliminado ? "Eliminado correctamente" : "No se pudo eliminar";

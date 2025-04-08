@@ -1,35 +1,32 @@
 <?php
+use Illuminate\Database\Eloquent\Model;
 
-class Municipio {
-    private $id;
-    private $nombre;
-    private $departamento;
-    private $pais;
-    private $alcalde;
-    private $gobernador;
-    private $patronReligioso;
-    private $numHabitantes;
-    private $numCasas;
-    private $numParques;
-    private $numColegios;
-    private $descripcion;
-    private $usuarioId;
+class Municipios extends Model
+{
+    protected $table = 'municipio'; 
 
-    public function __construct($id, $nombre, $departamento, $pais, $alcalde, $gobernador, $patronReligioso, $numHabitantes, $numCasas, $numParques, $numColegios, $descripcion, $usuarioId) {
-        $this->id = $id;
-        $this->nombre = $nombre;
-        $this->departamento = $departamento;
-        $this->pais = $pais;
-        $this->alcalde = $alcalde;
-        $this->gobernador = $gobernador;
-        $this->patronReligioso = $patronReligioso;
-        $this->numHabitantes = $numHabitantes;
-        $this->numCasas = $numCasas;
-        $this->numParques = $numParques;
-        $this->numColegios = $numColegios;
-        $this->descripcion = $descripcion;
-        $this->usuarioId = $usuarioId;
+    protected $primaryKey = 'id_municipio'; 
+
+    public $timestamps = false; 
+
+    protected $fillable = [
+        'nombre',
+        'departamento',
+        'pais',
+        'alcalde',
+        'gobernador',
+        'patron_religioso',
+        'num_habitantes',
+        'num_casas',
+        'num_parques',
+        'num_colegios',
+        'descripcion',
+        'id_usuario'
+    ];
+
+    public function usuario()
+    {
+        return $this->belongsTo(Usuario::class, 'id_usuario', 'id_usuario');
     }
 }
-
 ?>
