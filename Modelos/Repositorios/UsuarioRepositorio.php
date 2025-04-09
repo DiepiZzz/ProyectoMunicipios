@@ -4,15 +4,12 @@ namespace Modelos\Repositorios;
 
 use Modelos\Entidades\Usuario;
 
-class UsuarioRepositorio
-{
-    public function obtenerTodos()
-    {
+class UsuarioRepositorio{
+    public function obtenerTodos(){
         return Usuario::all();
     }
 
-    public function buscarPorId($id)
-    {
+    public function buscarPorId($id){
         return Usuario::find($id);
     }
 
@@ -21,8 +18,7 @@ class UsuarioRepositorio
         return Usuario::create($datos);
     }
 
-    public function actualizar($id, $datos)
-    {
+    public function actualizar($id, $datos){
         $usuario = Usuario::find($id);
         if ($usuario) {
             $usuario->update($datos);
@@ -36,12 +32,18 @@ class UsuarioRepositorio
         return Usuario::destroy($id);
     }
 
-    public function obtenerPorUsernameOEmail($usernameOrEmail)
-    {
+    public function obtenerPorUsernameOEmail($usernameOrEmail){
         return Usuario::where('username', $usernameOrEmail)
-                      ->orWhere('email', $usernameOrEmail)
-                      ->first();
+            ->orWhere('email', $usernameOrEmail)
+            ->first();
+    }
+
+    public function obtenerPorEmail($email){
+        echo "Método obtenerPorEmail cargado correctamente.";
+        return Usuario::where('email', $email)->first();
+    }
+
+    public function obtenerPorToken($token) {
+        return Usuario::where('password_reset_token', $token)->first();
     }
 }
-
-

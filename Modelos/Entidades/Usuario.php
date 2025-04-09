@@ -10,5 +10,5 @@ class Usuario extends Model
     protected $primaryKey = 'id_usuario';
     public $timestamps = false;
 
-    protected $fillable = ['username', 'password', 'nombre', 'email'];
+    protected $fillable = ['username', 'password', 'nombre', 'email', 'reset_token'];
 }
