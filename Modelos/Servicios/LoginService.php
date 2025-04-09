@@ -1,11 +1,20 @@
 <?php
 namespace Modelos\Servicios;
+
 use Illuminate\Validation\Factory as ValidatorFactory;
 use Illuminate\Container\Container;
-use Modelos\Entidades\Usuario;
+use Modelos\Repositorios\UsuarioRepositorio;
+use Illuminate\Hashing\BcryptHasher;
 
 class loginService
 {
+    private $repositorio;
+
+    public function __construct()
+    {
+        $this->repositorio = new UsuarioRepositorio();
+    }
+
     public function login($usernameOrEmail, $password)
     {
         $validatorFactory = Container::getInstance()->make(ValidatorFactory::class);
@@ -29,9 +38,8 @@ class loginService
             ];
         }
 
-        $usuario = Usuario::where('username', $usernameOrEmail)
-                          ->orWhere('email', $usernameOrEmail)
-                          ->first();
+        // Busca al usuario por username o email desde el repositorio
+        $usuario = $this->repositorio->obtenerPorUsernameOEmail($usernameOrEmail);
 
         if ($usuario && password_verify($password, $usuario->password)) {
             return [

@@ -35,6 +35,13 @@ class UsuarioRepositorio
     {
         return Usuario::destroy($id);
     }
+
+    public function obtenerPorUsernameOEmail($usernameOrEmail)
+    {
+        return Usuario::where('username', $usernameOrEmail)
+                      ->orWhere('email', $usernameOrEmail)
+                      ->first();
+    }
 }
 
 

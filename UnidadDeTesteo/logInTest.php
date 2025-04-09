@@ -1,21 +1,20 @@
 <?php
+require_once __DIR__ . '/../bootstrap.php';
+require_once __DIR__ . '/../vendor/autoload.php'; // Ajusta si tu path es distinto
 
-require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../Librerias/orm/ConexionBaseDeDatos.php';
-require_once __DIR__ . '/../Modelos/Entidades/Usuario.php';
-require_once __DIR__ . '/../Modelos/Servicios/loginService.php';
+use Modelos\Servicios\loginService;
 
-require_once __DIR__ . '/../Bootstrap.php';
-
-use Modelos\Servicios\LoginService;
-
-// Datos del usuario a probar
-$usernameOrEmail = 'prueba_usuario';         // o también puedes probar con el email
-$password = 'contraseña123';                 // contraseña usada al registrar
-
-// Crear instancia del servicio de login
+// Instancia del servicio de login
 $loginService = new loginService();
+
+// Datos de prueba
+$usernameOrEmail = 'olas123'; // O un correo registrado
+$password = '12345678';         // Contraseña del usuario registrado
+
+// Ejecutar el login
 $resultado = $loginService->login($usernameOrEmail, $password);
 
-// Mostrar resultado
+// Mostrar el resultado
+echo "<pre>";
 print_r($resultado);
+echo "</pre>";

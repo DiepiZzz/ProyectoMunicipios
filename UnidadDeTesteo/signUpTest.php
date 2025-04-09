@@ -10,10 +10,10 @@ use Modelos\Servicios\signUpServices;
 
 // Crear usuario de prueba
 $usuario = new Usuario();
-$usuario->username = 'prueba_usuario';
-$usuario->password = 'contraseña123';
-$usuario->nombre   = 'Prueba Registro';
-$usuario->email    = 'registro_test_' . rand(1, 1000) . '@example.com'; // evitar duplicados
+$usuario->username = 'olas123'; // Nombre de usuario
+$usuario->password = '12345678';
+$usuario->nombre   = 'ola';
+$usuario->email    = 'ola' . rand(1, 1000) . '@example.com'; // evitar duplicados
 
 // Crear servicio y registrar usuario
 $signupService = new signUpServices();
