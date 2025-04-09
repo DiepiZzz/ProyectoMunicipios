@@ -4,15 +4,12 @@ namespace Controladores;
 
 use Modelos\Servicios\LoginService;
 
-class LoginControlador
-{
-    public function index()
-    {
+class LoginControlador{
+    public function index(){
         require_once __DIR__ . '/../Vista/forms/Usuarios/UsuariosLogin.php';
     }
 
-    public function autenticar()
-{
+    public function autenticar(){
     $usuario = $_POST['usuario'] ?? '';
     $password = $_POST['password'] ?? '';
 

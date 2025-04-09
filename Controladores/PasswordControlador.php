@@ -9,8 +9,7 @@ class PasswordControlador{
         require_once __DIR__ . '/../Vista/forms/Usuarios/UsuariosSolicitarRecuperacion.php';
     }
 
-    public function enviarToken()
-    {
+    public function enviarToken(){
         $email = $_POST['email'] ?? '';
         $servicio = new passwordService();
         $respuesta = $servicio->enviarTokenRecuperacion($email);
