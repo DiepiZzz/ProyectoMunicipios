@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Database\Eloquent\Model;
+use Modelos\Entidades\Usuario;
 
 class Municipios extends Model
 {

@@ -13,8 +13,7 @@ class UsuarioRepositorio{
         return Usuario::find($id);
     }
 
-    public function crear($datos)
-    {
+    public function crear($datos){
         return Usuario::create($datos);
     }
 
@@ -27,8 +26,7 @@ class UsuarioRepositorio{
         return null;
     }
 
-    public function eliminar($id)
-    {
+    public function eliminar($id){
         return Usuario::destroy($id);
     }
 
@@ -39,11 +37,11 @@ class UsuarioRepositorio{
     }
 
     public function obtenerPorEmail($email){
-        echo "Método obtenerPorEmail cargado correctamente.";
+
         return Usuario::where('email', $email)->first();
     }
 
-    public function obtenerPorToken($token) {
+    public function obtenerPorToken($token){
         return Usuario::where('password_reset_token', $token)->first();
     }
 }

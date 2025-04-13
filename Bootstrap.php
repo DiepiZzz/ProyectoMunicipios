@@ -8,10 +8,8 @@ use Illuminate\Translation\Translator;
 use Illuminate\Validation\Factory as ValidatorFactory;
 use Illuminate\Validation\DatabasePresenceVerifier;
 
-// 1. Cargar autoload de Composer
 require_once __DIR__ . '/vendor/autoload.php';
 
-// 2. Configurar Eloquent ORM (conexión a PostgreSQL)
 $capsule = new Capsule();
 
 $capsule->addConnection([
