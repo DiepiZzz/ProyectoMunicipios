@@ -1,4 +1,6 @@
 <?php
+namespace Modelos\Entidades;
+
 use Illuminate\Database\Eloquent\Model;
 use Modelos\Entidades\Usuario;
 
