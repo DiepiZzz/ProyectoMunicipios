@@ -1,3 +1,9 @@
+<?php
+function safeValue($value) {
+    return htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,55 +15,55 @@
     <div class="container mt-5">
         <h2 class="text-center mb-4"><?= isset($municipio) ? 'Editar' : 'Crear' ?> Municipio</h2>
 
-        <form method="POST" action="index.php?controlador=municipio&accion=<?= isset($municipio) ? 'actualizar' : 'guardar' ?>">
+        <form method="POST" action="index.php?controlador=municipios&accion=<?= isset($municipio) ? 'actualizar' : 'guardar' ?>">
             <?php if (isset($municipio)): ?>
-                <input type="hidden" name="id" value="<?= $municipio->id ?>">
+                <input type="hidden" name="id" value="<?= safeValue($municipio->id) ?>">
             <?php endif; ?>
 
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" name="nombre" class="form-control" required value="<?= $municipio->nombre ?? '' ?>">
+                    <input type="text" name="nombre" class="form-control" required value="<?= safeValue($municipio->nombre ?? '') ?>">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="departamento" class="form-label">Departamento</label>
-                    <input type="text" name="departamento" class="form-control" required value="<?= $municipio->departamento ?? '' ?>">
+                    <input type="text" name="departamento" class="form-control" required value="<?= safeValue($municipio->departamento ?? '') ?>">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="país" class="form-label">País</label>
-                    <input type="text" name="país" class="form-control" required value="<?= $municipio->país ?? '' ?>">
+                    <input type="text" name="pais" class="form-control" required value="<?= safeValue($municipio->pais ?? '') ?>">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="alcalde" class="form-label">Alcalde</label>
-                    <input type="text" name="alcalde" class="form-control" value="<?= $municipio->alcalde ?? '' ?>">
+                    <input type="text" name="alcalde" class="form-control" value="<?= safeValue($municipio->alcalde ?? '') ?>">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="gobernador" class="form-label">Gobernador</label>
-                    <input type="text" name="gobernador" class="form-control" value="<?= $municipio->gobernador ?? '' ?>">
+                    <input type="text" name="gobernador" class="form-control" value="<?= safeValue($municipio->gobernador ?? '') ?>">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="patronoReligioso" class="form-label">Patrono Religioso</label>
-                    <input type="text" name="patronoReligioso" class="form-control" value="<?= $municipio->patronoReligioso ?? '' ?>">
+                    <input type="text" name="patron_religioso" class="form-control" value="<?= safeValue($municipio->patronoReligioso ?? '') ?>">
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="numHabitantes" class="form-label">Nº Habitantes</label>
-                    <input type="number" name="numHabitantes" class="form-control" value="<?= $municipio->numHabitantes ?? '' ?>">
+                    <input type="number" name="numHabitantes" class="form-control" value="<?= safeValue($municipio->numHabitantes ?? '') ?>">
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="numCasas" class="form-label">Nº Casas</label>
-                    <input type="number" name="numCasas" class="form-control" value="<?= $municipio->numCasas ?? '' ?>">
+                    <input type="number" name="numCasas" class="form-control" value="<?= safeValue($municipio->numCasas ?? '') ?>">
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="numParques" class="form-label">Nº Parques</label>
-                    <input type="number" name="numParques" class="form-control" value="<?= $municipio->numParques ?? '' ?>">
+                    <input type="number" name="numParques" class="form-control" value="<?= safeValue($municipio->numParques ?? '') ?>">
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="numColegios" class="form-label">Nº Colegios</label>
-                    <input type="number" name="numColegios" class="form-control" value="<?= $municipio->numColegios ?? '' ?>">
+                    <input type="number" name="numColegios" class="form-control" value="<?= safeValue($municipio->numColegios ?? '') ?>">
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="descripcion" class="form-label">Descripción</label>
-                    <textarea name="descripcion" class="form-control" rows="3"><?= $municipio->descripcion ?? '' ?></textarea>
+                    <textarea name="descripcion" class="form-control" rows="3"><?= safeValue($municipio->descripcion ?? '') ?></textarea>
                 </div>
             </div>
 
@@ -67,7 +73,7 @@
         </form>
 
         <div class="mt-3 text-center">
-            <a href="index.php?controlador=municipio&accion=index" class="text-decoration-none">Volver al listado</a>
+            <a href="index.php?controlador=municipios&accion=index" class="text-decoration-none">Volver al listado</a>
         </div>
     </div>
 </body>

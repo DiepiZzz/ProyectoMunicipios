@@ -25,10 +25,33 @@ class MunicipiosControlador {
 
     // Guardar nuevo municipio
     public function guardar() {
+        session_start();
+    
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $datos = $this->filtrarDatos($_POST);
+            if (!isset($_SESSION['usuario']['id_usuario'])) {
+                echo "Error: No se ha iniciado sesión o falta el id del usuario.";
+                echo '<pre>'; print_r($_SESSION); echo '</pre>';
+                exit;
+            }
+    
+          
+    
+            $datos = [
+                'nombre' => $_POST['nombre'] ?? '',
+                'departamento' => $_POST['departamento'] ?? '',
+                'pais' => $_POST['pais'] ?? '',
+                'alcalde' => $_POST['alcalde'] ?? '',
+                'gobernador' => $_POST['gobernador'] ?? '',
+                'patron_religioso' => $_POST['patron_religioso'] ?? '',
+                'num_habitantes' => $_POST['num_habitantes'] ?? 0,
+                'num_casas' => $_POST['num_casas'] ?? 0,
+                'num_parques' => $_POST['numParques'] ?? 0,
+                'num_colegios' => $_POST['numColegios'] ?? 0,
+                'descripcion' => $_POST['descripcion'] ?? '',
+                'id_usuario' => $_SESSION['usuario']['id_usuario']
+            ];
+    
             $this->municipioService->registrarMunicipio($datos);
-
             header('Location: index.php?controlador=municipios&accion=index');
             exit;
         }
@@ -82,14 +105,14 @@ class MunicipiosControlador {
         return [
             'nombre'            => htmlspecialchars($datos['nombre'] ?? ''),
             'departamento'      => htmlspecialchars($datos['departamento'] ?? ''),
-            'país'              => htmlspecialchars($datos['país'] ?? ''),
+            'pais'              => htmlspecialchars($datos['pais'] ?? ''),
             'alcalde'           => htmlspecialchars($datos['alcalde'] ?? ''),
             'gobernador'        => htmlspecialchars($datos['gobernador'] ?? ''),
-            'patronoReligioso'  => htmlspecialchars($datos['patronoReligioso'] ?? ''),
-            'numHabitantes'     => (int) ($datos['numHabitantes'] ?? 0),
-            'numCasas'          => (int) ($datos['numCasas'] ?? 0),
-            'numParques'        => (int) ($datos['numParques'] ?? 0),
-            'numColegios'       => (int) ($datos['numColegios'] ?? 0),
+            'patron_religioso'  => htmlspecialchars($datos['patron_religioso'] ?? ''),
+            'num_habitantes'     => (int) ($datos['num_habitantes'] ?? 0),
+            'num_casas'          => (int) ($datos['num_casas'] ?? 0),
+            'num_parques'        => (int) ($datos['num_parques'] ?? 0),
+            'num_colegios'       => (int) ($datos['num_colegios'] ?? 0),
             'descripcion'       => htmlspecialchars($datos['descripcion'] ?? ''),
             'id_usuario'        => (int) ($datos['id_usuario'] ?? 0),
         ];

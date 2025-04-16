@@ -15,21 +15,29 @@ class LoginControlador
     {
         $usuario = $_POST['usuario'] ?? '';
         $password = $_POST['password'] ?? '';
-
+    
         $servicio = new loginService();
         $resultado = $servicio->login($usuario, $password);
-
+    
         if ($resultado['status'] === 200) {
             session_start();
-            $_SESSION['usuario'] = $resultado['usuario'];
+    
+            // Guardamos la sesión con claves más claras
+            $_SESSION['usuario'] = [
+                'id_usuario' => $resultado['usuario']['id'],  // ← aquí el cambio importante
+                'nombre'     => $resultado['usuario']['nombre'],
+                'email'      => $resultado['usuario']['email'],
+                'username'   => $resultado['usuario']['username']
+            ];
+    
             $mensaje = 'Bienvenido ' . $resultado['usuario']['nombre'] . ', Redirigiendo al formulario de municipios...';
-
+    
             echo '<script>
-            setTimeout(function() {
-                window.location.href = "index.php?controlador=municipios&accion=index";
-            }, 3000);
-        </script>';
-
+                setTimeout(function() {
+                    window.location.href = "index.php?controlador=municipios&accion=index";
+                }, 3000);
+            </script>';
+    
             require_once __DIR__ . '/../Vista/forms/Usuarios/UsuariosLogin.php';
             return;
         } else {

@@ -1,3 +1,8 @@
+<?php
+function safeValue($value) {
+    return htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8');
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,7 +17,7 @@
             <h2>Listado de Municipios</h2>
             <div>
                 <a href="index.php?controlador=municipios&accion=formularioCrear" class="btn btn-primary">Agregar Municipio</a>
-               <a href="index.php?controlador=login&accion=cerrarSesion" class="btn btn-outline-secondary ms-2">Cerrar sesión</a>
+                <a href="index.php?controlador=login&accion=cerrarSesion" class="btn btn-outline-secondary ms-2">Cerrar sesión</a>
             </div>
         </div>
 
@@ -26,19 +31,29 @@
                         <th>País</th>
                         <th>Alcalde</th>
                         <th>Gobernador</th>
+                        <th>Patrono Religioso</th>
                         <th>Nº Habitantes</th>
+                        <th>Nº Casas</th>
+                        <th>Nº Parques</th>
+                        <th>Nº Colegios</th>
+                        <th>Descripción</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($municipios as $municipio): ?>
                         <tr>
-                            <td><?= htmlspecialchars($municipio->nombre) ?></td>
-                            <td><?= htmlspecialchars($municipio->departamento) ?></td>
-                            <td><?= htmlspecialchars($municipio->país) ?></td>
-                            <td><?= htmlspecialchars($municipio->alcalde) ?></td>
-                            <td><?= htmlspecialchars($municipio->gobernador) ?></td>
-                            <td><?= htmlspecialchars($municipio->numHabitantes) ?></td>
+                            <td><?= safeValue($municipio->nombre) ?></td>
+                            <td><?= safeValue($municipio->departamento) ?></td>
+                            <td><?= safeValue($municipio->pais) ?></td>
+                            <td><?= safeValue($municipio->alcalde) ?></td>
+                            <td><?= safeValue($municipio->gobernador) ?></td>
+                            <td><?= safeValue($municipio->patron_religioso) ?></td>
+                            <td><?= safeValue($municipio->num_habitantes) ?></td>
+                            <td><?= safeValue($municipio->num_casas) ?></td>
+                            <td><?= safeValue($municipio->num_parques) ?></td>
+                            <td><?= safeValue($municipio->num_colegios) ?></td>
+                            <td><?= safeValue($municipio->descripcion) ?></td>
                             <td>
                                 <a href="index.php?controlador=municipios&accion=formularioEditar&id=<?= $municipio->id_municipios ?>" class="btn btn-sm btn-warning">Editar</a>
                                 <a href="index.php?controlador=municipios&accion=eliminar&id=<?= $municipio->id_municipios ?>" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro que deseas eliminar este municipio?')">Eliminar</a>
