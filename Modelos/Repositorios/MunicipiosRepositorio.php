@@ -25,10 +25,17 @@ class MunicipioRepositorio
     public function actualizar($id, array $datos)
     {
         $municipio = Municipios::find($id);
+        
         if ($municipio) {
-            $municipio->update($datos);
-            return $municipio;
+
+            echo "<pre>";
+        print_r($datos); // Muestra los datos que se están enviando
+        echo "</pre>";
+            $exito = $municipio->update($datos); 
+            return $exito ? $municipio : null; 
+            exit;  
         }
+    
         return null;
     }
 

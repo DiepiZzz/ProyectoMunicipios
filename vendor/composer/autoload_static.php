@@ -51,6 +51,8 @@ class ComposerStaticInit4b3f46cc5aaf35ab7ec7e7f8a4a9721e
             'Symfony\\Component\\EventDispatcher\\' => 34,
             'Symfony\\Component\\ErrorHandler\\' => 31,
             'Symfony\\Component\\Clock\\' => 24,
+            'Svg\\' => 4,
+            'Sabberworm\\CSS\\' => 15,
         ),
         'P' => 
         array (
@@ -66,6 +68,7 @@ class ComposerStaticInit4b3f46cc5aaf35ab7ec7e7f8a4a9721e
         'M' => 
         array (
             'Modelos\\' => 8,
+            'Masterminds\\' => 12,
         ),
         'L' => 
         array (
@@ -97,6 +100,7 @@ class ComposerStaticInit4b3f46cc5aaf35ab7ec7e7f8a4a9721e
         'F' => 
         array (
             'Fruitcake\\Cors\\' => 15,
+            'FontLib\\' => 8,
         ),
         'E' => 
         array (
@@ -104,11 +108,13 @@ class ComposerStaticInit4b3f46cc5aaf35ab7ec7e7f8a4a9721e
         ),
         'D' => 
         array (
+            'Dompdf\\' => 7,
             'Doctrine\\Inflector\\' => 19,
             'Doctrine\\Common\\Lexer\\' => 22,
         ),
         'C' => 
         array (
+            'Controladores\\' => 14,
             'Carbon\\Doctrine\\' => 16,
             'Carbon\\' => 7,
         ),
@@ -191,6 +197,14 @@ class ComposerStaticInit4b3f46cc5aaf35ab7ec7e7f8a4a9721e
         array (
             0 => __DIR__ . '/..' . '/symfony/clock',
         ),
+        'Svg\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dompdf/php-svg-lib/src/Svg',
+        ),
+        'Sabberworm\\CSS\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/src',
+        ),
         'Psr\\SimpleCache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/simple-cache/src',
@@ -227,6 +241,10 @@ class ComposerStaticInit4b3f46cc5aaf35ab7ec7e7f8a4a9721e
         'Modelos\\' => 
         array (
             0 => __DIR__ . '/../..' . '/Modelos',
+        ),
+        'Masterminds\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/masterminds/html5/src',
         ),
         'Laravel\\SerializableClosure\\' => 
         array (
@@ -307,9 +325,17 @@ class ComposerStaticInit4b3f46cc5aaf35ab7ec7e7f8a4a9721e
         array (
             0 => __DIR__ . '/..' . '/fruitcake/php-cors/src',
         ),
+        'FontLib\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dompdf/php-font-lib/src/FontLib',
+        ),
         'Egulias\\EmailValidator\\' => 
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/src',
+        ),
+        'Dompdf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dompdf/dompdf/src',
         ),
         'Doctrine\\Inflector\\' => 
         array (
@@ -318,6 +344,10 @@ class ComposerStaticInit4b3f46cc5aaf35ab7ec7e7f8a4a9721e
         'Doctrine\\Common\\Lexer\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/lexer/src',
+        ),
+        'Controladores\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Controladores',
         ),
         'Carbon\\Doctrine\\' => 
         array (
@@ -345,6 +375,7 @@ class ComposerStaticInit4b3f46cc5aaf35ab7ec7e7f8a4a9721e
         'DateMalformedStringException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateMalformedStringException.php',
         'DateObjectError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateObjectError.php',
         'DateRangeError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateRangeError.php',
+        'Dompdf\\Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
         'Override' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/Override.php',
         'PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',

@@ -47,11 +47,11 @@ function safeValue($value) {
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="numHabitantes" class="form-label">Nº Habitantes</label>
-                    <input type="number" name="numHabitantes" class="form-control" value="<?= safeValue($municipio->numHabitantes ?? '') ?>">
+                    <input type="number" name="num_habitantes" class="form-control" value="<?= safeValue($municipio->numHabitantes ?? '') ?>">
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="numCasas" class="form-label">Nº Casas</label>
-                    <input type="number" name="numCasas" class="form-control" value="<?= safeValue($municipio->numCasas ?? '') ?>">
+                    <input type="number" name="num_casas" class="form-control" value="<?= safeValue($municipio->numCasas ?? '') ?>">
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="numParques" class="form-label">Nº Parques</label>

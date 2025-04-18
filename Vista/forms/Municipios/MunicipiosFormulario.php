@@ -55,8 +55,9 @@ function safeValue($value) {
                             <td><?= safeValue($municipio->num_colegios) ?></td>
                             <td><?= safeValue($municipio->descripcion) ?></td>
                             <td>
-                                <a href="index.php?controlador=municipios&accion=formularioEditar&id=<?= $municipio->id_municipios ?>" class="btn btn-sm btn-warning">Editar</a>
-                                <a href="index.php?controlador=municipios&accion=eliminar&id=<?= $municipio->id_municipios ?>" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro que deseas eliminar este municipio?')">Eliminar</a>
+                                <a href="index.php?controlador=municipios&accion=formularioEditar&id_municipio=<?= $municipio->id_municipio ?>" class="btn btn-sm btn-warning">Editar</a>
+                                <a href="index.php?controlador=municipios&accion=graficaGeneral" class="btn btn-info ms-2">Ver Gráfica</a>
+                                <a href="index.php?controlador=municipios&accion=eliminar&id=<?= $municipio->id_municipio ?>" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro que deseas eliminar este municipio?')">Eliminar</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

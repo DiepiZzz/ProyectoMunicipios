@@ -15,7 +15,7 @@ if ($controlador === 'login') {
         $controladorObj->index();
     } elseif ($accion === 'autenticar') {
         $controladorObj->autenticar();
-    }elseif ($accion === 'cerrarSesion') { 
+    } elseif ($accion === 'cerrarSesion') {
         $controladorObj->cerrarSesion();
     }
 } elseif ($controlador === 'registro') {
@@ -53,7 +53,9 @@ if ($controlador === 'login') {
         $controladorObj->actualizar();
     } elseif ($accion === 'eliminar') {
         $controladorObj->eliminar();
+    } elseif ($accion === 'graficaGeneral') {
+        $controladorObj->graficaGeneral();
+    } elseif ($accion === 'generarPdf') {
+        $controladorObj->generarPdf();
     }
-
 }
-
