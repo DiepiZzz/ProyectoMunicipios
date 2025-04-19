@@ -12,11 +12,7 @@
 <body>
     <h2>Resumen General de Municipios</h2>
     <p>Gráfica generada:</p>
-    <?php if (!empty($_POST['imagenGrafica'])): ?>
-        <img src="<?= htmlspecialchars($_POST['imagenGrafica'], ENT_QUOTES, 'UTF-8') ?>" alt="graficaMunicipios">
-        <p>Este PDF incluye la gráfica generada del municipio en cuestión</p>
-    <?php else: ?>
-        <p>No se proporcionó ninguna gráfica para mostrar.</p>
-    <?php endif; ?>
+    <img src="<?= htmlspecialchars($grafico) ?>" alt="Gráfica de municipios">
+    <p>Este PDF incluye la gráfica generada del municipio en cuestión</p>
 </body>
 </html>

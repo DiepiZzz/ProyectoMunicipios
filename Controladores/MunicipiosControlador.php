@@ -1,7 +1,10 @@
 <?php
 
 require_once __DIR__ . '/../Modelos/Servicios/MunicipiosService.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use Modelos\Servicios\MunicipiosService;
 
 class MunicipiosControlador
@@ -218,32 +221,24 @@ class MunicipiosControlador
         $dompdf->stream('reporte_municipios.pdf', ['Attachment' => true]);
     }
 
-    public function generarPdf()
-{
-    $grafico = $_POST['graficoBase64'] ?? null;
-
-    // Obtener los municipios
-    $municipioServicio = new MunicipiosService();
-    $municipios = $municipioServicio->listarMunicipios();
-
-    $datosMunicipios = [];
-    foreach ($municipios as $m) {
-        $datosMunicipios[] = [
-            'nombre' => $m->nombre,
-            'numHabitantes' => $m->numHabitantes,
-            'numCasas' => $m->numCasas,
-            'numColegios' => $m->numColegios,
-            'numParques' => $m->numParques
-        ];
+    public function generarPdf() {
+        if (!isset($_POST['graficoBase64'])) {
+            echo "No se recibió imagen base64";
+            return;
+        }
+    
+        $grafico = $_POST['graficoBase64'];
+    
+        ob_start();
+        require_once './Vista/forms/Municipios/MunicipiosPdf.php';
+        $html = ob_get_clean();
+    
+        // Ya no va require ni use aquí
+    
+        $dompdf = new Dompdf();
+        $dompdf->set_option('isRemoteEnabled', true); // Importante si usás imágenes base64
+        $dompdf->loadHtml($html);
+        $dompdf->render();
+        $dompdf->stream('reporte_municipios.pdf', ['Attachment' => true]);
     }
-
-    ob_start();
-    require_once __DIR__ . '/../Vista/forms/Municipios/MunicipiosPdf.php';
-    $html = ob_get_clean();
-
-    $dompdf = new \Dompdf\Dompdf();
-    $dompdf->loadHtml($html);
-    $dompdf->render();
-    $dompdf->stream('reporte_municipios.pdf', ['Attachment' => true]);
-}
 }
