@@ -17,7 +17,7 @@ function safeValue($value) {
             <h2>Listado de Municipios</h2>
             <div>
                 <a href="index.php?controlador=municipios&accion=formularioCrear" class="btn btn-primary">Agregar Municipio</a>
-                <a href="index.php?controlador=municipios&accion=graficaGeneral" class="btn btn-info ms-2">Ver Gráfica</a>
+                <a href="index.php?controlador=municipios&accion=graficaGeneral" class="btn btn-info ms-2">Ver Gráficas</a>
                 <a href="index.php?controlador=login&accion=cerrarSesion" class="btn btn-outline-secondary ms-2">Cerrar sesión</a>
             </div>
         </div>

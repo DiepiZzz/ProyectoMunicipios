@@ -28,9 +28,7 @@ class MunicipioRepositorio
         
         if ($municipio) {
 
-            echo "<pre>";
-        print_r($datos); // Muestra los datos que se están enviando
-        echo "</pre>";
+    
             $exito = $municipio->update($datos); 
             return $exito ? $municipio : null; 
             exit;  
