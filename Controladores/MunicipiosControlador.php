@@ -4,7 +4,6 @@ require_once __DIR__ . '/../Modelos/Servicios/MunicipiosService.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use Dompdf\Dompdf;
-use Dompdf\Options;
 use Modelos\Servicios\MunicipiosService;
 
 class MunicipiosControlador
