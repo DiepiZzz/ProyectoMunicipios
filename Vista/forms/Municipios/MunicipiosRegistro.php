@@ -22,7 +22,7 @@ function safeValue($value) {
 
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="nombre" class="form-label">Nombre</label>
+                    <label for="nombre" class="form-label">Nombre del municipio</label>
                     <input type="text" name="nombre" class="form-control" required value="<?= safeValue($municipio->nombre ?? '') ?>">
                 </div>
                 <div class="col-md-6 mb-3">
